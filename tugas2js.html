@@ -1,0 +1,55 @@
+<script>
+  // input data pegawai
+  let nama_pegawai = "Ridwan";
+  let jabatan = "Manager";
+  let status = "Menikah";
+
+  // gaji pokok
+  switch (jabatan) {
+    case "Manager":
+      gaji_pokok = 15000000;
+      break;
+    case "A.Manager":
+      gaji_pokok = 10000000;
+      break;
+    case "Staff":
+      gaji_pokok = 5000000;
+      break;
+    default:
+      gaji_pokok = 0;
+  }
+
+  // Menghitung tunjangan jabatan (15% dari gapok)
+  let tunjangan_jabatan = 0.15 * gaji_pokok;
+
+  // Menghitung BPJS (10% dari gapok)
+  let bpjs = 0.1 * gaji_pokok;
+
+  //Menghitung tunjangan keluarga (20% dari gapok jika menikah, 0% jika belum menikah)
+  if (status == "Menikah") tunjangan_keluarga = 0.2 * gaji_pokok;
+  else tunjangan_keluarga = 0;
+
+  //Menghitung total gaji
+  let total_gaji = gaji_pokok + tunjangan_jabatan + bpjs + tunjangan_keluarga;
+
+  //hasil cetak data keuangan pegawai
+  document.write("<h1>Data Keuangan Pegawai</h1>");
+  document.write(
+    "<br> Pegawai : " +
+      nama_pegawai +
+      "<br> Jabatan : " +
+      jabatan +
+      "<br> Status : " +
+      status +
+      "<br> Gaji Pokok : " +
+      gaji_pokok +
+      "<br> Tunjangan Jabatan : " +
+      tunjangan_jabatan +
+      "<br> BPJS : " +
+      bpjs +
+      "<br> Tunjangan Keluarga : " +
+      tunjangan_keluarga +
+      "<br> Total Gaji : " +
+      total_gaji
+  );
+</script>
