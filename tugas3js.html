@@ -1,0 +1,97 @@
+<script>
+  let s1 = { nama: "Pegawai1", jabatan: "Manager" };
+  let s2 = { nama: "Pegawai2", jabatan: "Manager" };
+  let s3 = { nama: "Pegawai3", jabatan: "Asisten Manager" };
+  let s4 = { nama: "Pegawai4", jabatan: "Asisten Manager" };
+  let s5 = { nama: "Pegawai5", jabatan: "Asisten Manager" };
+  let s6 = { nama: "Pegawai6", jabatan: "Supervisor" };
+  let s7 = { nama: "Pegawai7", jabatan: "Supervisor" };
+  let s8 = { nama: "Pegawai8", jabatan: "Supervisor" };
+  let s9 = { nama: "Pegawai9", jabatan: "Staff" };
+  let s10 = { nama: "Pegawai10", jabatan: "Staff" };
+  let pegawai = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
+</script>
+<table style="padding: 10px; text-align: center; width: 100%">
+  <thead>
+    <tr>
+      <th>Nama Pegawai</th>
+      <th>Jabatan</th>
+      <th>Gaji Pokok</th>
+      <th>Tunjangan Jabatan</th>
+      <th>Tunjangan Kesehatan</th>
+      <th>Gaji Kotor</th>
+      <th>Agama</th>
+      <th>Zakat Profesi</th>
+      <th>Take Home Pay</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <script>
+      // Loop melalui array pegawai dan menghitung data untuk setiap pegawai
+      for (let i = 0; i < pegawai.length; i++) {
+        let pegawaiItem = pegawai[i];
+        let nama = pegawaiItem.nama;
+        let jabatan = pegawaiItem.jabatan;
+        let gaji_pokok;
+        let tunjangan_jabatan;
+        let tunjangan_kesehatan;
+        let gaji_kotor;
+        let agama;
+        let zakat_Profesi;
+        let take_HomePay;
+
+        // Menghitung gaji pokok berdasarkan jabatan
+        switch (jabatan) {
+          case "Manager":
+            gaji_pokok = 15000000;
+            break;
+          case "Asisten Manager":
+            gaji_pokok = 10000000;
+            break;
+          case "Supervisor":
+            gaji_pokok = 7000000;
+            break;
+          case "Staff":
+            gaji_pokok = 4000000;
+            break;
+          default:
+            gaji_pokok = 0;
+        }
+
+        // Menghitung tunjangan jabatan (20% dari gaji pokok)
+        tunjangan_jabatan = 0.2 * gaji_pokok;
+
+        // Menghitung tunjangan kesehatan (10% dari gaji pokok)
+        tunjangan_kesehatan = 0.1 * gaji_pokok;
+
+        // Menghitung gaji kotor
+        gaji_kotor = gaji_pokok + tunjangan_jabatan + tunjangan_kesehatan;
+
+        // Ternary untuk menentukan apakah pegawai Muslim atau non-Muslim
+        agama = i % 2 !== 1;
+
+        // Menghitung zakat Profesi (jika Muslim dan gaji kotor >= 7000000)
+        zakat_Profesi = agama && gaji_kotor >= 7000000 ? 0.025 * gaji_kotor : 0;
+
+        // Menghitung Take Home Pay
+        take_HomePay = gaji_kotor - zakat_Profesi;
+
+        // Menambahkan baris ke dalam tabel
+        const rowColor = i % 2 == 0 ? "yellow" : "blue";
+        document.write(`
+        <tr style="background-color:${rowColor}">
+              <td>${nama}</td>
+              <td>${jabatan}</td>
+              <td>${gaji_pokok}</td>
+              <td>${tunjangan_jabatan}</td>
+              <td>${tunjangan_kesehatan}</td>
+              <td>${gaji_kotor}</td>
+              <td>${agama ? "Muslim" : "Non-Muslim"}</td>
+              <td>${zakat_Profesi}</td>
+              <td>${take_HomePay}</td>
+              </tr>`);
+      }
+    </script>
+  </tbody>
+</table>
