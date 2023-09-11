@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas4 - Form Toko Online</title>
+  </head>
+  <body>
+    <form id="form">
+      <table
+        style="
+          width: 50%;
+          background-color: rgb(219, 109, 236);
+          border: 1px solid;
+          justify-content: center;
+          border: 1px solid; 
+          padding : 10px;
+        "
+      >
+        <tr>
+          <th colspan="2">Form Toko Online</th>
+        </tr>
+        <td><label for="nama">Nama Pelanggan:</label></td>
+        <td><input type="text" id="nama" name="nama"  placeholder="masukkan nama anda"/><br /><br /></td>
+        <tr>
+          <td>
+            <label for="produk">Pilih Produk:</label>
+           <td> 
+            <select id="produk" name="produk" >
+              <option value="produk">Pilih Produk</option>
+              <option value="TV">TV</option>
+              <option value="AC">AC</option>
+              <option value="Kulkas">Kulkas</option>
+            </select>
+        </td>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="jumlah">Banyak Item Produk:</label></td>
+          <td>
+            <input
+              type="number"
+              id="jumlah"
+              name="jumlah"
+              placeholder="masukkan jumlah item"
+            /><br /><br />
+          </td> 
+        </tr>
+
+        <tr>
+          <th colspan="2">
+            <input
+              type="button"
+              value="Beli"
+              name="proses"
+              onclick="transaksi()"
+            />
+          </th>
+        </tr>
+      </table>
+    </form>
+    <script>
+      function transaksi() {
+        let nama_pelanggan = document.getElementById("nama").value;
+        let produk = document.getElementById("produk").value;
+        let jumlah_item = parseInt(document.getElementById("jumlah").value);
+      
+      let harga_satuan;
+      switch (produk) {
+        case "TV":
+          harga_satuan = 2000000;
+          break;
+        case "AC":
+          harga_satuan = 3000000;
+          break;
+        case "Kulkas":
+          harga_satuan = 4000000;
+          break;
+        default:
+          harga_satuan = 0;
+      }
+
+      let harga_kotor = harga_satuan * jumlah_item;
+      let diskon = 0;
+
+      if (produk === "Kulkas" && jumlah_item >= 3) {
+        diskon = 0.3 * harga_kotor;
+      } else if (produk === "AC" && jumlah_item >= 3) {
+        diskon = 0.2 * harga_kotor;
+      } else {
+        diskon = 0.1 * harga_kotor;
+      }
+      let ppn = 0.1 * (harga_kotor - diskon);
+      let harga_bayar = harga_kotor - diskon + ppn;
+
+      document.write(
+        "<br> Nama Pelanggan: " + nama_pelanggan +
+        "<br> Produk yang Dibeli: " + produk +
+        "<br> Jumlah Item Produk yang Dibeli: " + jumlah_item +
+        "<br> Harga Satuan: Rp " + harga_satuan +
+        "<br> Harga Kotor: " + harga_kotor +
+        "<br> Diskon:  " + diskon +
+        "<br> PPN: " + ppn +
+        "<br> Harga Bayar: " + harga_bayar
+        );
+    }
+    
+    </script>
+    
+  </body>
+</html>
