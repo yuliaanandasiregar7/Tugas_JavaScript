@@ -94,17 +94,19 @@
       let ppn = 0.1 * (harga_kotor - diskon);
       let harga_bayar = harga_kotor - diskon + ppn;
 
-      document.write(
-        "<br> Nama Pelanggan: " + nama_pelanggan +
-        "<br> Produk yang Dibeli: " + produk +
-        "<br> Jumlah Item Produk yang Dibeli: " + jumlah_item +
-        "<br> Harga Satuan: Rp " + harga_satuan +
-        "<br> Harga Kotor: " + harga_kotor +
-        "<br> Diskon:  " + diskon +
-        "<br> PPN: " + ppn +
-        "<br> Harga Bayar: " + harga_bayar
-        );
-    }
+      let proses = `
+      Nama Pelanggan: ${nama_pelanggan}
+      Produk yang Dibeli: ${produk}
+      Jumlah Item Produk yang Dibeli: ${jumlah_item}
+      Harga Satuan: Rp ${harga_satuan}
+      Harga Kotor: Rp ${harga_kotor}
+      Diskon: ${diskon}
+      PPN: ${ppn}
+      Harga Bayar: ${harga_bayar}
+      `;
+
+      alert(proses)
+      }
     
     </script>
     
