@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas 5 - Info Gempa</title>
+  </head>
+  <body>
+    <h2 style="text-align: center">INFORMASI GEMPA</h2>
+    <script>
+      // variabel dan kontruktor
+      class Gempa {
+        constructor(lokasi, skala) {
+          this.lokasi = lokasi;
+          this.skala = skala;
+        }
+
+        // fungsi dampak dan cetak populasi
+        dampak() {
+          let dampak = "Tidak ada dampak";
+          if (this.skala > 0 && this.skala <= 2) {
+            dampak = "tidak terasa";
+          } else if (this.skala > 2 && this.skala <= 4) {
+            dampak = "bangunan retak-retak";
+          } else if (this.skala > 4 && this.skala <= 6) {
+            dampak = "bangunan roboh";
+          } else if (this.skala > 6) {
+            dampak = "bangunan roboh dan berpotensi tsunami";
+          }
+
+          document.write("<br>Lokasi Gempa : ", this.lokasi), "<br>";
+          document.write("<br>Skala        : ", this.skala, "<br>");
+          document.write("Dampak       : ", dampak, "<br>");
+        }
+      }
+
+      // Membuat 5 objek Gempa dengan berbagai skala
+      const gempa1 = new Gempa("Maroko", 6.8);
+      const gempa2 = new Gempa("Valdiva", 9.5);
+      const gempa3 = new Gempa("Indonesia", 5.2);
+      const gempa4 = new Gempa("Jepang", 9.0);
+      const gempa5 = new Gempa("Tibet", 2);
+
+      // Menggunakan fungsi dampak() untuk mencetak info gempa
+      gempa1.dampak();
+      gempa2.dampak();
+      gempa3.dampak();
+      gempa4.dampak();
+      gempa5.dampak();
+    </script>
+  </body>
+</html>
