@@ -1,0 +1,23 @@
+h2 {
+  text-align: center;
+  margin: 100 px 50px;
+}
+body {
+  text-align: center;
+  margin: auto;
+  background-color: rgb(238, 150, 243);
+}
+#profile,
+#moto_hidup,
+#keahlian {
+  display: inline-block;
+  margin-top: auto;
+  width: 50%;
+  color: rgb(255, 255, 255);
+  background-color: rgb(229, 99, 225);
+  border: 3px solid #e8dddd;
+  padding: 10 px;
+  text-align: center;
+  height: 100px;
+  cursor: pointer;
+}
