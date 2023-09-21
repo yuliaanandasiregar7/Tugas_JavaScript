@@ -17,17 +17,23 @@
     <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
+    <?php
+    $nama = 'Yulia Ananda Siregar';
+    $alamat = 'Padangsidimpuan / Kelapa Dua Depok';
+    $email = 'yuliaanandasiregar27@gmail.com';
+    $no_hp = '(+62) 813 7728 5315';
+    ?>
     <div class="row">
         <div class="col-md-12">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">Home</a>
+              <a class="nav-link active" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="index1.html">Profile</a>
+              <a class="nav-link active" href="index1.php">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="index2.html">Contact</a>
+              <a class="nav-link active" href="index2.php">Contact</a>
             </li>
           </ul>
         </div>
@@ -75,10 +81,10 @@
             </div>
             <div class="col-md-4">
               <address>
-                <strong>@ yuliaanandasiregar</strong><br />
-                Padangsidimpuan /
-                Kelapa Dua Depok<br />
-                <abbr title="Phone"></abbr> (+62) 813 7728 5315
+              <strong><?= $nama ?></strong><br />
+                <strong><?=$email?></strong><br />
+                <?=$alamat?><br />
+                <abbr title="Phone"></abbr> <?=$no_hp?>
               </address>
             </div>
           </div>
