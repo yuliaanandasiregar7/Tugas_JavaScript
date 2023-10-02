@@ -119,6 +119,6 @@ if(isset($_POST['proses'])){
     }
         echo "Total skor : $total <br>";
         echo "Kategori Skill : ".skor_skill($total). "<br>";
-        echo "Domisili : $domisili <br>";
+        echo "Domisili : $domisili <br>";
 }
 ?>
