@@ -1,0 +1,140 @@
+//masuk ke ruang DB melalui CMD
+Microsoft Windows [Version 10.0.19045.3448]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\yuliana ananda>cd\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+//tampilkan database yang sudah dibuat
+MariaDB [(none)]> SHOW DATABASES;
++----------------------+
+| Database             |
++----------------------+
+| classicmodels        |
+| db_yuli21073ti       |
+| dbananda             |
+| dbapotek             |
+| dbkampus             |
+| dbkoperasi           |
+| dbpeminjaman_ruangan |
+| dbperpustakaan       |
+| dbrentalmobil        |
+| dbtransaksi          |
+| dwlatihan            |
+| information_schema   |
+| laravel_covid        |
+| laravel_rest_api     |
+| mysql                |
+| pegawaisib5          |
+| performance_schema   |
+| phpmyadmin           |
+| rest_api             |
+| salesdb              |
+| test                 |
+| tokosib5             |
++----------------------+
+22 rows in set (0.061 sec)
+
+//buat database baru : dbpegawai
+MariaDB [(none)]> CREATE DATABASE dbpegawai;
+Query OK, 1 row affected (0.002 sec)
+
+//masuk ke ruang database dbpegawai
+MariaDB [(none)]> use dbpegawai;
+Database changed
+MariaDB [dbpegawai]>
+
+//tampilkan tabel2 yang sudah ada di dbpegawai
+MariaDB [dbpegawai]> SHOW DATABASES;
++----------------------+
+| Database             |
++----------------------+
+| classicmodels        |
+| db_yuli21073ti       |
+| dbananda             |
+| dbapotek             |
+| dbkampus             |
+| dbkoperasi           |
+| dbpegawai            |
+| dbpeminjaman_ruangan |
+| dbperpustakaan       |
+| dbrentalmobil        |
+| dbtransaksi          |
+| dwlatihan            |
+| information_schema   |
+| laravel_covid        |
+| laravel_rest_api     |
+| mysql                |
+| pegawaisib5          |
+| performance_schema   |
+| phpmyadmin           |
+| rest_api             |
+| salesdb              |
+| test                 |
+| tokosib5             |
++----------------------+
+23 rows in set (0.004 sec)
+
+// buat tabel pegawai field-field
+MariaDB [dbpegawai]> CREATE TABLE pegawai(
+    -> id int PRIMARY KEY,
+    -> nip char(5) NOT NULL UNIQUE,
+    -> nama varchar(30) NOT NULL,
+    -> gender enum('L','P') NOT NULL,
+    -> umur int NOT NULL,
+    -> berat_badan FLOAT);
+Query OK, 0 rows affected (0.104 sec)
+
+//tampilkan database yang sudah dibuat
+MariaDB [dbpegawai]> SHOW DATABASES;
++----------------------+
+| Database             |
++----------------------+
+| classicmodels        |
+| db_yuli21073ti       |
+| dbananda             |
+| dbapotek             |
+| dbkampus             |
+| dbkoperasi           |
+| dbpegawai            |
+| dbpeminjaman_ruangan |
+| dbperpustakaan       |
+| dbrentalmobil        |
+| dbtransaksi          |
+| dwlatihan            |
+| information_schema   |
+| laravel_covid        |
+| laravel_rest_api     |
+| mysql                |
+| pegawaisib5          |
+| performance_schema   |
+| phpmyadmin           |
+| rest_api             |
+| salesdb              |
+| test                 |
+| tokosib5             |
++----------------------+
+23 rows in set (0.004 sec)
+
+//lihat deskripsi tabel pegawai yang sudah dibuat
+MariaDB [dbpegawai]> DESC pegawai;
++-------------+---------------+------+-----+---------+-------+
+| Field       | Type          | Null | Key | Default | Extra |
++-------------+---------------+------+-----+---------+-------+
+| id          | int(11)       | NO   | PRI | NULL    |       |
+| nip         | char(5)       | NO   | UNI | NULL    |       |
+| nama        | varchar(30)   | NO   |     | NULL    |       |
+| gender      | enum('L','P') | NO   |     | NULL    |       |
+| umur        | int(11)       | NO   |     | NULL    |       |
+| berat_badan | float         | YES  |     | NULL    |       |
++-------------+---------------+------+-----+---------+-------+
+6 rows in set (0.066 sec)
