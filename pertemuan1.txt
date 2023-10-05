@@ -1,2 +1,57 @@
-//melihat seluruh database
+//melihat seluruh Database
+mysql -u root -p // perintah di CMD
+
+//melihat semua databases
 SHOW DATABASES;
+
+//membuat database baru 
+CREATE DATABASE pegawaisib5;
+
+//menggunakan database yang telah di buat
+use pegawaisib5;
+
+//proses DDL Create
+//membuat table
+CREATE TABLE jenis(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    nama varchar(30) NOT NULL UNIQUE
+);
+/* penjelasan : id adalah nama kolom atau header kolom
+             primary key adalah key atau kunci dari sebuah table
+             AUTO_INCREMENT adalah key untuk autoincrement penomoran
+             NOT NULL Menandakan kolom tersebut tidak boleh kosong jika data mulai diisi
+             UNIQUE adalah key untuk kolom agar data tidak boleh sama */
+
+//melihat hasil table jenis
+DESC jenis; 
+
+//membuat relasi antara table jenis dan table produk
+CREATE TABLE produk(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    nama varchar(30) NOT NULL UNIQUE,
+    harga double NOT NULL,
+   	stok int NOT NULL,
+    idjenis int NOT NULL REFERENCES jenis(id),
+    foto varchar(30)
+);
+
+//Alter table (menambahkan kolom)
+key => add
+ALTER TABLE jenis ADD COLUMN 
+IF NOT EXISTS keterangan varchar(50) AFTER nama;
+
+//ALter table (mengubah kolom)
+key => change
+ALTER TABLE jenis CHANGE keterangan ket varchar (50);
+
+//ALter table menggunakan modify
+key=>MODIFY
+ALTER TABLE jenis MODIFY ket TEXT AFTER nama;
+
+//Alter table mengahpus table
+key=>DROP
+ALTER TABLE jenis DROP COLUMN ket;
+
+// Alter table merubah nama table
+key=>rename
+ALTER TABLE jenis RENAME TO jenis_produk;
