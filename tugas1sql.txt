@@ -54,35 +54,13 @@ Database changed
 MariaDB [dbpegawai]>
 
 //tampilkan tabel2 yang sudah ada di dbpegawai
-MariaDB [dbpegawai]> SHOW DATABASES;
-+----------------------+
-| Database             |
-+----------------------+
-| classicmodels        |
-| db_yuli21073ti       |
-| dbananda             |
-| dbapotek             |
-| dbkampus             |
-| dbkoperasi           |
-| dbpegawai            |
-| dbpeminjaman_ruangan |
-| dbperpustakaan       |
-| dbrentalmobil        |
-| dbtransaksi          |
-| dwlatihan            |
-| information_schema   |
-| laravel_covid        |
-| laravel_rest_api     |
-| mysql                |
-| pegawaisib5          |
-| performance_schema   |
-| phpmyadmin           |
-| rest_api             |
-| salesdb              |
-| test                 |
-| tokosib5             |
-+----------------------+
-23 rows in set (0.004 sec)
+MariaDB [dbpegawai]>   SHOW TABLES FROM dbpegawai;
++---------------------+
+| Tables_in_dbpegawai |
++---------------------+
+| pegawai             |
++---------------------+
+1 row in set (0.001 sec)
 
 // buat tabel pegawai field-field
 MariaDB [dbpegawai]> CREATE TABLE pegawai(
