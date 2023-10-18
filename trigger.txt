@@ -1,0 +1,41 @@
+MariaDB [dbpos1]> CREATE TRIGGER cek_pembayaran BEFORE INSERT ON pembayaran
+         FOR EACH ROW
+         BEGIN
+         DECLARE total_bayar DECIMAL(10,2);
+         DECLARE total_pesanan DECIMAL(10,2);
+         SELECT SUM(jumlah) INTO total_bayar FROM pembayaran WHERE pesanan_id = NEW.pesanan_id;
+         SELECT total INTO total_pesanan FROM pesanan WHERE id = NEW.pesanan_id;
+         IF total_bayar + NEW.jumlah >= total_pesanan THEN
+         SET NEW.status_pembayaran = 'Lunas';
+         END IF;
+         END $$
+Query OK, 0 rows affected (0.061 sec)
+
+//MariaDB [dbpos1]> DELIMITER ;
+//MariaDB [dbpos1]> INSERT INTO pembayaran (nokuitansi, tanggal, jumlah, ke, pesanan_id,
+    ->      status_pembayaran) VALUES ('MD004','2023-10-10',15000,1,2, '');
+Query OK, 1 row affected (0.055 sec)
+
+//MariaDB [dbpos1]> SELECT * FROM pembayaran;
++----+------------+------------+---------+------+------------+-------------------+
+| id | nokuitansi | tanggal    | jumlah  | ke   | pesanan_id | status_pembayaran |
++----+------------+------------+---------+------+------------+-------------------+
+|  6 | k002       | 2023-10-18 | 5000000 |    1 |          1 | NULL              |
+| 13 | MD004      | 2023-10-10 |   15000 |    1 |          2 |                   |
++----+------------+------------+---------+------+------------+-------------------+
+2 rows in set (0.001 sec)
+
+
+//MariaDB [dbpos1]> INSERT INTO pembayaran (nokuitansi, tanggal, jumlah, ke, pesanan_id,
+    ->      status_pembayaran) VALUES ('MD005','2023-10-10',15000,2,2, '');
+Query OK, 1 row affected (0.049 sec)
+
+//MariaDB [dbpos1]> SELECT * FROM pembayaran;
++----+------------+------------+---------+------+------------+-------------------+
+| id | nokuitansi | tanggal    | jumlah  | ke   | pesanan_id | status_pembayaran |
++----+------------+------------+---------+------+------------+-------------------+
+|  6 | k002       | 2023-10-18 | 5000000 |    1 |          1 | NULL              |
+| 13 | MD004      | 2023-10-10 |   15000 |    1 |          2 |                   |
+| 15 | MD005      | 2023-10-10 |   15000 |    2 |          2 | Lunas             |
++----+------------+------------+---------+------+------------+-------------------+
+3 rows in set (0.000 sec)
