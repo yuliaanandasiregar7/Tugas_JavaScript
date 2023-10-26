@@ -8,7 +8,7 @@ $data_jenisProduk = $model->dataJenis();
                         <h1 class="mt-4">Tables</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
+                            <li class="breadcrumb-item active">Jenis Produk</li>
                         </ol>
                         <!-- <div class="card mb-4">
                             <div class="card-body">
@@ -29,12 +29,14 @@ $data_jenisProduk = $model->dataJenis();
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -46,11 +48,18 @@ $data_jenisProduk = $model->dataJenis();
                                         <tr>
                                             <td><?= $no++ ?></td>
                                             <td><?= $row['nama'] ?></td>
+                                            <td>
+                                                <form action="">
+                                                    <a href="index.php?url=jenis_form&idedit=<?= $row['id'];?>" class="btn btn-sm btn-warning">
+                                                        Ubah
+                                                    </a>
+                                                </form>
+                                            </td>
                                         </tr>
+
                                         <?php
-
+                                        $no ++;
                                         }
-
                                         ?>
                                     </tbody>
                                 </table>
