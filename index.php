@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once 'admin/koneksi.php';
-include_once 'admin/Member.php';
+// include_once 'admin/koneksi.php';
+// include_once 'admin/Member.php';
 // belum fix
 global $member;
 global $role;
