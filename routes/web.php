@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LihatNilaiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +37,5 @@ Route::get('/nilai', function(){
 Route::get('/daftarnilai', function(){
     return view('coba.daftar');
 });
+
+Route::get('/datamahasiswa',[LihatNilaiController::class, 'dataMahasiswa']);
