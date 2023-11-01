@@ -7,4 +7,4 @@ $nilai = 59.99;
 @else @php $ket = "gagal"; @endphp
 @endif
 
-Siswa {{ $nama }} dengan nilai {{nilai}} dinyatakan {{ $ket }}
+Siswa {{ $nama }} dengan nilai {{ $nilai }} dinyatakan {{ $ket }}
