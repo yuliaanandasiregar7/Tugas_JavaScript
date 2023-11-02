@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LihatNilaiController;
+use App\Http\Controllers\PagenotContrller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,3 +42,6 @@ Route::get('/daftarnilai', function(){
 });
 
 Route::get('/datamahasiswa',[LihatNilaiController::class, 'dataMahasiswa']);
+
+Route::get('/dashboard',[DashboardController::class, 'index']); 
+Route::get('/notefound', [PagenotContrller::class,'index']);
