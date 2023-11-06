@@ -24,7 +24,7 @@ class staffseeder extends Seeder
                 'email'=>uniqid().'@gmail.com',
                 'foto'=>uniqid('foto_'),
                 'created_at'=>new \DateTime,
-                'updated_at'=>null,
+                'updated_at'=>null, 
             ]);
         }
     }
