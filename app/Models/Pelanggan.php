@@ -15,6 +15,6 @@ class Pelanggan extends Model
     ];
 
     public function kartu(){
-        return $this->hasOne(Kartu::class);
+        return $this->belongsTo(Kartu::class);
     }
 }

@@ -6,7 +6,8 @@ use App\Http\Controllers\KartuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LihatNilaiController;
 use App\Http\Controllers\PagenotContrller;
-
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\ProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,8 @@ Route::get('/daftarnilai', function(){
 //routing manggil dari class controller
 Route::get('/datamahasiswa',[LihatNilaiController::class, 'dataMahasiswa']);
 
+//prefix
+Route::prefix('admin')->group(function(){
 Route::get('/dashboard',[DashboardController::class, 'index']); 
 
 //conton pemanggilan secara satu persatu function menggunakan get, put, update, delete
@@ -57,3 +60,6 @@ Route::resource('kartu', KartuController::class);
 
 //memanggil fungsi satu persatu
 Route::get('/jenis_produk', [JenisProdukController::class, 'index']);
+Route::get('/produk',[ProdukController::class,'index']);
+Route::resource('pelanggan', PelangganController::class);
+});
