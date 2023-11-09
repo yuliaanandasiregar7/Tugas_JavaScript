@@ -66,6 +66,11 @@ class ProdukController extends Controller
     public function show($id)
     {
         //
+        $produk = Produk::join('jenis_produk', 'jenis_produk_id', '=', 'jenis_produk.id')
+        ->select('produk.*', 'jenis_produk.nama as jenis')
+        ->where('produk.id', $id)
+        ->get();
+        return view ('admin.produk.detail', compact('produk'));
     }
 
     /**
@@ -77,6 +82,9 @@ class ProdukController extends Controller
     public function edit($id)
     {
         //
+        $jenis_produk = DB::table('jenis_produk')->get();
+        $produk = DB::table('produk')->where('id',$id)->get();
+        return view('admin.produk.edit', compact('produk', 'jenis_produk'));
     }
 
     /**
@@ -86,9 +94,19 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
         //
+        DB::table('produk')->where('id',$request->id)->update([
+            'kode'=>$request->kode,
+            'nama'=>$request->nama,
+            'harga_beli'=>$request->harga_beli,
+            'harga_jual'=>$request->harga_jual,
+            'stok'=>$request->stok,
+            'min_stok'=>$request->min_stok,
+            'jenis_produk_id'=>$request->jenis_produk_id,
+        ]);
+        return redirect('admin/produk');
     }
 
     /**
@@ -100,5 +118,7 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         //
+        DB::table('produk')->where('id', $id)->delete();
+        return redirect('admin/produk');
     }
 }
