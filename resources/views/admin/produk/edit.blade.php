@@ -1,8 +1,6 @@
 @extends('admin.layout.appadmin')
 @section('content')
 
-
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 @foreach($produk as $s)
@@ -45,13 +43,31 @@
       <input id="text4" name="min_stok" type="text" class="form-control" value="{{$s->min_stok}}">
     </div>
   </div>
+
+  <div class="form-group row">
+    <label for="text1" class="col-4 col-form-label">Foto</label> 
+    <div class="col-8">
+      <input id="text1" name="foto" type="file" class="form-control">
+      @if(!empty($s->foto))
+      <img src="{{url('admin/img')}}/{{$s->foto}}" alt="">
+      @endif
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="text2" class="col-4 col-form-label">Deskripsi</label> 
+    <div class="col-8">
+      <input id="text2" name="deskripsi" type="text" class="form-control" value="{{$s->deskripsi}}">
+    </div>
+  </div>
+
   <div class="form-group row">
     <label for="select" class="col-4 col-form-label">Jenis Produk</label> 
     <div class="col-8">
       <select id="select" name="jenis_produk_id" class="custom-select">
         @foreach ($jenis_produk as $j)
-        @php $sel = ($j->id == $s->jenis_produk_id) ? 'selected' : '';@endphp
-        <option value="{{$j->id}}">{{$j->nama}}</option>
+        @php $sel = ($j->id == $s->jenis_produk_id) ? 'selected' : ''; @endphp
+        <option value="{{$j->id}}" {{$sel}}>{{$j->nama}}</option>
        @endforeach
       </select>
     </div>

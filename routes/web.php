@@ -8,7 +8,7 @@ use App\Http\Controllers\LihatNilaiController;
 use App\Http\Controllers\PagenotContrller;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ProdukController;
-use App\Models\Jenis_produk;
+
 
 /*
 |--------------------------------------------------------------------------

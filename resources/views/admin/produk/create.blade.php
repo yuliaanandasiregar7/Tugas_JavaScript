@@ -1,8 +1,6 @@
 @extends('admin.layout.appadmin')
 @section('content')
 
-
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -20,7 +18,6 @@
       <input id="text1" name="nama" type="text" class="form-control">
     </div>
   </div>
-  
   <div class="form-group row">
     <label for="text2" class="col-4 col-form-label">Harga beli</label> 
     <div class="col-8">
@@ -43,6 +40,18 @@
     <label for="text4" class="col-4 col-form-label">Minimal stok</label> 
     <div class="col-8">
       <input id="text4" name="min_stok" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="text4" class="col-4 col-form-label">Foto</label> 
+    <div class="col-8">
+      <input id="text4" name="foto" type="file" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="textarea" class="col-4 col-form-label">Deskripsi</label> 
+    <div class="col-8">
+      <textarea id="textarea" name="deskripsi" cols="40" rows="5" class="form-control"></textarea>
     </div>
   </div>
   <div class="form-group row">
